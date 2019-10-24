@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: ui
+  name: ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: ui
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: ui
+    spec:
+      containers:
+      - image: gcr.io/formal-triode-238002/ui_image
+        name: ui
+        resources: {}
+        env:
+        - name: SERVER
+          value: http://backend-svc:8082
+status: {}
